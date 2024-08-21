@@ -28,9 +28,11 @@ const ViewNote = async (req,res)=>{
                 return res.status(404).json({ message: 'User not found' });
             }
             visible=loginUser.batch;
-            data = await Note.find({'batch':visible})
+            console.log(visible)
+            data = await Note.find({'visibility':'batch','batch':visible})
         }
         else{
+            console.log(visible)
             data = await Note.find({'visibility':visible})
         }
         
